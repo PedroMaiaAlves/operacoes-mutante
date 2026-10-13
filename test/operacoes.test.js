@@ -74,3 +74,55 @@ describe('Suíte de Testes Fraca para 50 Operações Aritméticas', () => {
   test('49. deve calcular o triplo de um número', () => { expect(triplo(10)).toBe(30); });
   test('50. deve calcular a metade de um número', () => { expect(metade(20)).toBe(10); });
 });
+
+describe('Casos de borda e caminhos alternativos', () => {
+  test('valida as mensagens dos erros de domínio', () => {
+    expect(() => divisao(5, 0)).toThrow('Divisão por zero não é permitida.');
+    expect(() => raizQuadrada(-1)).toThrow('Não é possível calcular a raiz quadrada de um número negativo.');
+    expect(() => fatorial(-1)).toThrow('Fatorial não é definido para números negativos.');
+    expect(() => maximoArray([])).toThrow('Array vazio не possui valor máximo.');
+    expect(() => minimoArray([])).toThrow('Array vazio не possui valor mínimo.');
+    expect(() => inverso(0)).toThrow('Não é possível inverter o número zero.');
+    expect(() => medianaArray([])).toThrow('Array vazio не possui mediana.');
+  });
+
+  test('aceita zero na raiz quadrada e no fatorial', () => {
+    expect(raizQuadrada(0)).toBe(0);
+    expect(fatorial(0)).toBe(1);
+    expect(fatorial(1)).toBe(1);
+  });
+
+  test('trata arrays vazios nas operações que possuem elemento neutro', () => {
+    expect(mediaArray([])).toBe(0);
+    expect(produtoArray([])).toBe(1);
+  });
+
+  test('distingue resultados verdadeiros e falsos nas verificações booleanas', () => {
+    expect(isPar(3)).toBe(false);
+    expect(isImpar(2)).toBe(false);
+    expect(isDivisivel(10, 3)).toBe(false);
+    expect(isMaiorQue(5, 5)).toBe(false);
+    expect(isMenorQue(5, 5)).toBe(false);
+    expect(isEqual(7, 8)).toBe(false);
+  });
+
+  test('rejeita não primos nos limites e dentro do laço', () => {
+    expect(isPrimo(1)).toBe(false);
+    expect(isPrimo(9)).toBe(false);
+  });
+
+  test('limita valores abaixo e acima do intervalo', () => {
+    expect(clamp(-1, 0, 10)).toBe(0);
+    expect(clamp(11, 0, 10)).toBe(10);
+  });
+
+  test('converte temperaturas diferentes dos pontos neutros das fórmulas', () => {
+    expect(celsiusParaFahrenheit(100)).toBe(212);
+    expect(fahrenheitParaCelsius(212)).toBe(100);
+  });
+
+  test('calcula medianas de arrays desordenados com tamanhos ímpar e par', () => {
+    expect(medianaArray([9, 1, 5])).toBe(5);
+    expect(medianaArray([10, 2, 4, 8])).toBe(6);
+  });
+});
