@@ -4,7 +4,7 @@ Bem-vindo ao trabalho prático de Teste de Mutação. O objetivo deste projeto �
 
 ## Contexto
 
-Este repositório contém uma biblioteca de cálculos simples. A suíte de testes inicial em `__tests__/` foi projetada para ter uma alta **cobertura de código**, mas esconde fraquezas que só o **teste de mutação** pode revelar.
+Este repositório contém uma biblioteca de cálculos simples. A suíte de testes inicial em `test/` foi projetada para ter uma alta **cobertura de código**, mas esconde fraquezas que só o **teste de mutação** pode revelar.
 
 Sua missão é atuar como um engenheiro de qualidade para encontrar essas fraquezas e escrever testes mais robustos para corrigi-las.
 
@@ -25,3 +25,21 @@ Sua missão é atuar como um engenheiro de qualidade para encontrar essas fraque
     - Rode o Stryker novamente e verifique se sua pontuação de mutação aumentou, idealmente para mais de 95%.
 
 Siga as instruções do documento do trabalho para a entrega final. Boa sorte!
+
+## Resultado obtido
+
+A suíte foi ampliada de 50 para 58 testes e passou a cobrir casos de borda, caminhos de erro e entradas que exercitam melhor as fórmulas. O resultado final foi:
+
+- 100% de cobertura de instruções, ramos, funções e linhas;
+- 100% de mutation score;
+- nenhum mutante sobrevivente ou sem cobertura.
+
+Para reproduzir as verificações:
+
+```bash
+npm test
+npm run coverage
+npm run mutate
+```
+
+O relatório escrito está em [`docs/relatorio-teste-mutacao.pdf`](docs/relatorio-teste-mutacao.pdf).
